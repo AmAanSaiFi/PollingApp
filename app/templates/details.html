@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="details">
+    <h1>Choices Page</h1>
+    <hr>
+    <h3>Ques : {{question.question_text}} </h3>
+
+    <form action="{% url 'vote' question.id %}" method="post">
+        {% csrf_token %}
+        <ul class="list-group">
+        {% for k in question.choice_set.all %}
+            <li class="list-group-item">
+                <input type="radio" name="choice" value="{{k.id}}" id="question_{{forloop.counter}}">
+                <label for="question_{{forloop.counter}}">{{k.choice_text}}</label>
+            </li>
+        {% endfor %}
+        </ul>     
+        <br>
+        <div class="text-center" style="margin-bottom: 20px;">
+            <input type="submit" class='w-50 btn btn-primary'value="Vote Now">
+        </div>
+        
+    </form>
+</section>
+
+{% endblock %}
+

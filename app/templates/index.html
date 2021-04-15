@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<section class="homepage">
+    <h1> <span>W</span>hat's Your Opinion ?</h1>
+    <ul>
+        {% for ques in questions %}
+                <a href="{% url 'details' ques.pk %}">
+                <li >
+                    {{ques}}
+                    <br>
+                </a>
+                <div class="row">
+                    <div class="col-6">
+                        <small>{{ques.pub_date}}</small>
+                    </div>
+                    <div class="col-6 text-right">
+                        <small class="text-right">Voted by : {{ques.viewsofquestion}} People</small>
+                    </div>
+                </div>
+                </li>        
+        {% endfor %}
+    </ul>
+</section>
+
+{% endblock %}

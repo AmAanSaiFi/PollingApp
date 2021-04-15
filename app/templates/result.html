@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<section class="result">
+    <h1>Result Page</h1>
+    <ul>
+        {% for choice in ques.choice_set.all %}
+        <li class="item">
+            <span class="choice_text">{{choice.choice_text}}</span> - <span class="votes">{{choice.votes}}</span> vote{{choice.votes|pluralize}}
+        </li>
+        {% endfor %}
+    </ul>
+    <div id="chart_div" class="chart"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Option');
+        data.addColumn('number', 'Votes');
+        choice_text = document.getElementsByClassName('choice_text');
+        votes = document.getElementsByClassName('votes');
+
+        var arr = [];
+        
+        for(var i = 0; i < choice_text.length; i++)
+        {
+            arr.push([choice_text[i].innerHTML, parseInt(votes[i].innerHTML)]);
+        }
+        data.addRows(arr);
+
+        // Set chart options
+        var options = {'title':'Results'};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
+</section>
+
+{% endblock %}

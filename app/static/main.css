@@ -1,0 +1,87 @@
+body{
+    font-weight: 300;
+    background-color: #f5f5f5;
+}
+ul{
+    list-style: none;
+    display: inline;
+}
+a{
+    font-size: 20px;
+    color: black;
+    text-decoration: none;
+}
+li{
+    background-color: white;
+    border-bottom: 1px solid #037AFB;
+    padding: 10px;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+li:hover{
+    background-color: lightblue;
+}
+.navbar-light .navbar-brand{
+    color: white;
+}
+.navbar-nav{
+    height: 55px;
+}
+.nav-item{
+    /* padding-top: 10px; */
+    background-color: #037AFB;
+    border-bottom: none;
+}
+.nav-item:hover{
+    background-color: #037AFB;
+}
+.homepage{
+    margin-top: 10px;
+}
+.homepage h1{
+    margin-bottom: 20px;
+}
+.homepage h1 span{
+    background-color: black;
+    color: white;
+    margin: 0px 5px;
+    padding: 0px 10px;
+}
+.homepage h1,
+.details h1,
+.details h3,
+.result h1{
+    font-weight: 100;
+    font-size: 60px;
+    margin-bottom: 0px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+.details h3{
+    text-align: left;
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+.result .chart{
+    text-align: -webkit-center;
+    width: 100%;
+}
+.result ul li:hover{
+    background-color: white;
+}
+@media(max-width: 768px){
+    .homepage h1,
+    .details h1,
+    .details h3,
+    .result h1{
+        font-size: 45px;
+    }
+    .details h3{
+        text-align: left;
+        font-size: 30px;
+    }
+    li{
+        padding: 6px;
+    }
+    
+}
